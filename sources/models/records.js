@@ -1,0 +1,43 @@
+export const data = new webix.DataCollection({ data:[
+	{ id:1, fullname: "Балахнина Екатерина Сергеевна", "D1": null, "D2": null, "3": null, "4": null, "5": null, "6": null, "7": null, "8": null, "9": null,"10": null, "11": null, "12": null, "13": null, "14": null,"15": null,"16": null,"17": null, "18": null, "19": null, "20": null,"21": null,"22": "ОП(УВ),ОТ","23": null,"24": null,"25": null,"26": null,"27": null,"28": null,"29": null,"30": null,},
+	{ id:2, fullname: "Болдузев Денис Вячеславович", "1": null, "2": null, "3": null, "4": null, "5": null, "6": null, "7": null, "8": null, "9": null,"10": null, "11": null, "12": null, "13": null, "14": null,"15": null,"16": null,"17": null, "18": null, "19": null, "20": null,"21": null,"22": null,"23": null,"24": null,"25": null,"26": null,"27": null,"28": null,"29": null,"30": null,},
+	{ id:3, fullname: "Векессер Павел Владимирович", "1": null, "2": null, "3": null, "4": null, "5": null, "6": null, "7": null, "8": null, "9": null,"10": null, "11": null, "12": null, "13": null, "14": null,"15": null,"16": null,"17": null, "18": null, "19": null, "20": null,"21": null,"22": null,"23": null,"24": "ОТ","25": null,"26": null,"27": null,"28": null,"29": null,"30": null,},
+	{ id:4, fullname: "Венерцева Наталья Викторовна", "1": null, "2": null, "3": null, "4": null, "5": null, "6": null, "7": null, "8": null, "9": null,"10": null, "11": null, "12": null, "13": null, "14": null,"15": null,"16": null,"17": null, "18": null, "19": null, "20": null,"21": null,"22": null,"23": null,"24": null,"25": null,"26": null,"27": null,"28": null,"29": null,"30": null,},
+	{ id:5, fullname: "Даминов Владислав Валитович", "1": null, "2": null, "3": null, "4": null, "5": null, "6": null, "7": null, "8": null, "9": null,"10": null, "11": null, "12": null, "13": null, "14": null,"15": null,"16": null,"17": null, "18": null, "19": null, "20": null,"21": null,"22": null,"23": null,"24": null,"25": null,"26": null,"27": null,"28": null,"29": null,"30": null,},
+	{ id:6, fullname: "Иванов Павел Нугзарович", "1": null, "2": null, "3": null, "4": null, "5": "ОП(УВ)", "6": null, "7": null, "8": null, "9": null,"10": null, "11": "ОП", "12": null, "13": null, "14": null,"15": null,"16": null,"17": null, "18": null, "19": null, "20": null,"21": null,"22": null,"23": null,"24": null,"25": null,"26": null,"27": null,"28": null,"29": null,"30": null,},
+	{ id:7, fullname: "Кулиш Виктор Владимирович", "1": null, "2": null, "3": null, "4": null, "5": null, "6": null, "7": null, "8": null, "9": null,"10": null, "11": null, "12": null, "13": null, "14": null,"15": null,"16": null,"17": null, "18": null, "19": null, "20": null,"21": null,"22": null,"23": null,"24": null,"25": null,"26": null,"27": null,"28": null,"29": null,"30": null,},
+	{ id:8, fullname: "Кебереков Игорь Павлович", "1": null, "2": null, "3": null, "4": null, "5": null, "6": null, "7": null, "8": null, "9": null,"10": null, "11": null, "12": null, "13": null, "14": null,"15": null,"16": null,"17": null, "18": null, "19": null, "20": null,"21": null,"22": null,"23": null,"24": null,"25": null,"26": null,"27": null,"28": null,"29": null,"30": null,},
+	{ id:9, fullname: "Манышев Руслан Григорьевич", "1": null, "2": null, "3": null, "4": null, "5": null, "6": null, "7": null, "8": null, "9": null,"10": null, "11": null, "12": null, "13": null, "14": null,"15": null,"16": null,"17": null, "18": null, "19": null, "20": null,"21": null,"22": null,"23": null,"24": null,"25": null,"26": null,"27": null,"28": null,"29": null,"30": null,},
+	{ id:10, fullname: "Крюкова Елена Александровна", "1": null, "2": "ОП(УВ)", "3": "ОП", "4": null, "5": null, "6": null, "7": null, "8": null, "9": "ОП","10": null, "11": null, "12": null, "13": null, "14": null,"15": null,"16": null,"17": null, "18": null, "19": null, "20": null,"21": null,"22": null,"23": null,"24": null,"25": null,"26": null,"27": null,"28": null,"29": null,"30": null,},
+	{ id:11, fullname: "Курносова Ирина Ивановна", "1": null, "2": null, "3": null, "4": null, "5": null, "6": null, "7": null, "8": null, "9": null,"10": null, "11": null, "12": null, "13": null, "14": null,"15": null,"16": null,"17": null, "18": null, "19": null, "20": null,"21": null,"22": null,"23": null,"24": null,"25": null,"26": null,"27": null,"28": null,"29": null,"30": null,},
+	{ id:12, fullname: "Лесников Максим Александрович", "1": null, "2": null, "3": null, "4": null, "5": null, "6": null, "7": null, "8": null, "9": null,"10": null, "11": null, "12": null, "13": null, "14": "ОП","15": null,"16": null,"17": null, "18": null, "19": null, "20": null,"21": null,"22": null,"23": null,"24": null,"25": null,"26": null,"27": null,"28": null,"29": null,"30": null,},
+	{ id:13, fullname: "Молодых Кристина Валерьевна", "1": null, "2": null, "3": null, "4": null, "5": null, "6": null, "7": null, "8": null, "9": null,"10": null, "11": null, "12": null, "13": null, "14": null,"15": null,"16": null,"17": null, "18": null, "19": null, "20": null,"21": null,"22": null,"23": null,"24": null,"25": null,"26": null,"27": null,"28": null,"29": null,"30": null,},
+	{ id:14, fullname: "Старовойтов Алексей Борисович", "1": null, "2": null, "3": null, "4": null, "5": null, "6": null, "7": null, "8": null, "9": null,"10": null, "11": null, "12": null, "13": null, "14": null,"15": null,"16": null,"17": null, "18": null, "19": null, "20": null,"21": null,"22": null,"23": null,"24": null,"25": null,"26": null,"27": null,"28": null,"29": null,"30": null,},
+	{ id:15, fullname: "Тайлунов Алан Артурович", "1": null, "2": null, "3": null, "4": null, "5": null, "6": null, "7": null, "8": null, "9": null,"10": null, "11": null, "12": null, "13": null, "14": null,"15": null,"16": null,"17": null, "18": null, "19": null, "20": null,"21": null,"22": null,"23": null,"24": null,"25": null,"26": null,"27": null,"28": null,"29": null,"30": null,},
+	{ id:16, fullname: "Трашева Ирина Александровна", "1": null, "2": null, "3": null, "4": null, "5": null, "6": null, "7": null, "8": null, "9": null,"10": null, "11": null, "12": null, "13": null, "14": null,"15": null,"16": null,"17": null, "18": null, "19": null, "20": null,"21": null,"22": null,"23": null,"24": null,"25": null,"26": null,"27": null,"28": null,"29": null,"30": null,},
+	{ id:17, fullname: "Трашева Ирина Юрьевна", "1": null, "2": null, "3": null, "4": null, "5": null, "6": null, "7": null, "8": null, "9": null,"10": null, "11": null, "12": null, "13": null, "14": null,"15": null,"16": null,"17": null, "18": null, "19": null, "20": null,"21": null,"22": null,"23": null,"24": null,"25": null,"26": null,"27": null,"28": null,"29": null,"30": null,},
+	{ id:18, fullname: "Тибереков Леонид Евгеньевич", "1": null, "2": null, "3": null, "4": null, "5": null, "6": null, "7": null, "8": null, "9": null,"10": null, "11": null, "12": null, "13": null, "14": null,"15": null,"16": null,"17": null, "18": null, "19": null, "20": null,"21": null,"22": null,"23": null,"24": null,"25": null,"26": null,"27": null,"28": null,"29": null,"30": null,},
+	{ id:19, fullname: "Чиндашев Юрий Иосифович", "1": null, "2": null, "3": null, "4": null, "5": null, "6": null, "7": null, "8": null, "9": null,"10": null, "11": null, "12": null, "13": null, "14": null,"15": null,"16": null,"17": null, "18": null, "19": null, "20": null,"21": null,"22": null,"23": null,"24": null,"25": null,"26": null,"27": null,"28": null,"29": null,"30": null,},
+	{ id:20, fullname: "Шипкова Кристина Александровна", "1": null, "2": null, "3": null, "4": null, "5": null, "6": null, "7": null, "8": null, "9": null,"10": null, "11": null, "12": null, "13": null, "14": null,"15": null,"16": null,"17": null, "18": null, "19": null, "20": null,"21": null,"22": null,"23": null,"24": null,"25": null,"26": null,"27": null,"28": null,"29": null,"30": null,},
+	{ id:21, fullname: "Челтушева Регина Артуровна", "1": null, "2": null, "3": null, "4": null, "5": null, "6": null, "7": null, "8": null, "9": null,"10": null, "11": null, "12": null, "13": null, "14": null,"15": null,"16": null,"17": null, "18": null, "19": null, "20": null,"21": null,"22": null,"23": null,"24": null,"25": null,"26": null,"27": null,"28": null,"29": null,"D30": null,},
+]});
+
+// export const latecomersCollection = new webix.DataCollection(
+// 	{
+//     url: "http://192.168.1.35:3000/api/latecomers",
+// 		on: {
+// 			onBeforeLoad: function () {
+// 				// const latecomers = $$("latecomers");
+// 				// console.log("onBeforeLoad");
+// 				console.log(latecomers);
+//
+// 				// webix.extend(this, webix.ProgressBar);
+// 				//
+// 				// this.showProgress();
+// 			},
+// 			onAfterLoad: function () {
+// 				console.log(this, "onAfterLoad");
+// 			}
+// 		}
+// 	}
+// );
