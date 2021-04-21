@@ -24,7 +24,7 @@ export default class TopView extends JetView {
       scroll: "auto",
       data: [
         {
-          id: "start",
+          id: "dashboards",
           icon: "mdi mdi-view-dashboard",
           value: "Панель Мониторинга",
         },
@@ -61,27 +61,15 @@ export default class TopView extends JetView {
   
   _init(view, url) {
     super._init(view, url);
-    
     /***
      *  Menu plugin
      * */
     this.use(plugins.Menu, "sidebar:menu");
-    /***
-     *  Set custom scroll bar
-     * */
-    // webix.CustomScroll.init();
+    
     /***
      *  Set Locale
      * */
     webix.i18n.setLocale("ru-RU");
-  
-    // const state = createState({
-    //   pickedDate: new Date(),
-    // });
-  
-    // this.setParam("some_my_param", state);
-    
-    // this.show("latecomers", { target:"left", params: { state }})
   }
   
 }
