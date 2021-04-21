@@ -89,8 +89,8 @@ export default {
           filterHTML: false,
           styles: true,
           autowidth: true,
-          docHeader: "Журнал опозданий на " + date,
-          filename: "Журнал опозданий на " + date
+          docHeader: "Табель на " + date,
+          filename: "Табель на " + date
         });
       }
     },
@@ -103,7 +103,7 @@ export default {
         const date = webix.Date.dateToStr("%F %Y")(pickerValue);
   
         webix.toExcel("latecomers", {
-          filename: "Журнал опозданий на " + date,
+          filename: "Табель на " + date,
           spans:true,
           styles:true,
         });
