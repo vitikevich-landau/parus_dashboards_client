@@ -1,6 +1,19 @@
+.pie-inner-text .webix_canvas_text {
+    /* My Styles */
+    color: black;
+}
+
 div.webix_cell.latecomers-selected-cell {
     /*border: 1px solid #0f5768;*/
     background-color: #DDDDFF !important;
+}
+
+.latecomers-vacation {
+    background-color: #58dccd !important;
+}
+
+.latecomers-empty {
+    background-color: #f16997 !important;
 }
 
 .latecomers-good {
