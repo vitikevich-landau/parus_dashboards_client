@@ -43,8 +43,8 @@ export class TabbarCellsView extends JetView {
 								},
 								{
 									cols: [
-										{header: "Прибытие", body: ArrivalDatatableView},
-										{header: "Выбытие", body: LeaveDatatableView},
+										{header: "ВЫХОД", body: LeaveDatatableView, id: "tabbar:exit"},
+										{header: "ВХОД", body: ArrivalDatatableView, id: "tabbar:enter"},
 										ExcelExportDatatableView
 									]
 								}
@@ -63,4 +63,26 @@ export class TabbarCellsView extends JetView {
 		 * 	url change, store reload
 		 * */
 	}
+	
+	ready(_$view, _$url) {
+		super.ready(_$view, _$url);
+		
+		webix.html.addCss(
+			$$("tabbar:exit")
+				.getNode()
+				.getElementsByClassName("webix_accordionitem_label")
+				[0],
+			"red"
+		);
+		
+		webix.html.addCss(
+			$$("tabbar:enter")
+				.getNode()
+				.getElementsByClassName("webix_accordionitem_label")
+				[0],
+			"green"
+		);
+		
+	}
+	
 }

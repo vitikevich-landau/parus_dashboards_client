@@ -1,5 +1,4 @@
 import {JetView} from "webix-jet";
-import TimeEditorPopupView from "jet-views/latecomers/timesheet/TimeEditorPopupView";
 
 export class TabbarView extends JetView {
 	config() {
@@ -11,7 +10,7 @@ export class TabbarView extends JetView {
 			height: 36,
 			options: [
 				{value: "Табель", id: "workSheet"},
-				{value: "Прибытие/Выбытие", id: "timeSheet"},
+				{value: "ВЫХОД/ВХОД", id: "timeSheet"},
 			]
 		};
 	}
