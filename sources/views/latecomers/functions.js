@@ -2,7 +2,7 @@ const options = [
   {id: "ОП", value: "ОП"},
   {id: "ОП(УВ)", value: "ОП(УВ)"},
   {id: "ОТ", value: "ОТ"},
-  {id: "О(У)", value: "О(У)"},
+  {id: "Н", value: "Н"},
   {id: "БОЛ", value: "БОЛ"},
   {id: "КОМ", value: "КОМ"},
 ];
@@ -36,6 +36,10 @@ function changeCellColor(v) {
       return "latecomers-bad";
     case "ОП(УВ)":
       return "latecomers-good";
+    case "Н":
+      return "latecomers-empty";
+      case "ОТ":
+      return "latecomers-vacation";
   }
 }
 
@@ -86,7 +90,12 @@ export function generateColumns(days) {
         header: {
           text: `0${i + 1}`.slice(-2),
           css: {
-            background: markCurrentDayColumn(i + 1)
+            background: markCurrentDayColumn(i + 1),
+            "-webkit-user-select": "none",
+            "-moz-user-select": "none",
+            "-ms-user-select": "none",
+            "-o-user-select": "none",
+            "user-select": "none",
           }
         },
         width: 42,
@@ -103,7 +112,8 @@ export function generateColumns(days) {
           "-ms-user-select": "none",
           "-o-user-select": "none",
           "user-select": "none",
-          // color: "blue"
+          color: "blue"
+          // color: "#476cee"
         },
         suggest: {
           view: "checksuggest",

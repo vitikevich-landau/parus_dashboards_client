@@ -1,5 +1,6 @@
 import {JetView} from "webix-jet";
-import {COLORS} from "../../config";
+import {API_SERVICE_URL, COLORS} from "../../config";
+
 
 export default class ChartLineView extends JetView {
 	config() {
@@ -11,7 +12,7 @@ export default class ChartLineView extends JetView {
 			view: "chart",
 			id: "chartLine",
 			// data: chartCollection,
-			url: `http://localhost:3000/api/dashboards/chart/${month}/${year}`,
+			url: `${API_SERVICE_URL}/dashboards/chart/${month}/${year}`,
 			height: 350,
 			type: "line",
 			value: "#lates#",

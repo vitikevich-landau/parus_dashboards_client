@@ -1,6 +1,6 @@
 import {JetView} from "webix-jet";
 import {pieCollection} from "../../models/chartCollection";
-import {COLORS} from "../../config";
+import {API_SERVICE_URL, COLORS} from "../../config";
 
 export default class ChartPieView extends JetView {
 	config() {
@@ -13,7 +13,7 @@ export default class ChartPieView extends JetView {
 		return {
 			// width: 500,
 			gravity: .52,
-			url: `http://localhost:3000/api/dashboards/pie/${month}/${year}`,
+			url: `${API_SERVICE_URL}/dashboards/pie/${month}/${year}`,
 			view: "chart",
 			type: "donut",
 			value: "#count#",

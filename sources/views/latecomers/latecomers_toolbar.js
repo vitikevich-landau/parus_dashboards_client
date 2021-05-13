@@ -4,6 +4,7 @@ import {API_SERVICE_URL} from "../../config";
 export default {
   view: "toolbar",
   paddingX: 10,
+  height: 36,
   cols: [
     {
       view: "datepicker",
@@ -78,24 +79,6 @@ export default {
     {},
     {
       view: "icon",
-      icon: "mdi mdi-pdf-box",
-      tooltip: "Скачать в PDF",
-      click: function () {
-        const pickerValue = $$("datepicker").getValue();
-        const date = webix.Date.dateToStr("%F %Y")(pickerValue);
-        
-        webix.toPDF("latecomers", {
-          // title:true,
-          filterHTML: false,
-          styles: true,
-          autowidth: true,
-          docHeader: "Табель на " + date,
-          filename: "Табель на " + date
-        });
-      }
-    },
-    {
-      view: "icon",
       icon: "mdi mdi-microsoft-excel",
       tooltip: "Скачать в Excel",
       click: function () {
@@ -104,49 +87,11 @@ export default {
   
         webix.toExcel("latecomers", {
           filename: "Табель на " + date,
-          spans:true,
+          // spans:true,
           styles:true,
         });
       }
     },
     {width: 15},
-    {
-      view: "button",
-      label: "Сохранить",
-      width: 100,
-      css: "webix_primary",
-      click: function (id, event) {
-        /***
-         *  lock button before send
-         * */
-        this.disable();
-        
-        const data = addPickedDateToDtItems($$("latecomers"), $$("datepicker"));
-        
-        webix.ajax().post(
-          API_SERVICE_URL + "/latecomers/",
-          data
-        )
-          .then(response => {
-            
-            /***
-             *  unlock button before send
-             * */
-            return response.json();
-          })
-          .then(json => {
-            console.log(json);
-            webix.message({type:"success", text:"Сохранено"});
-          })
-          .catch(() => {
-            webix.message({type:"error", text:"Ошибка соединения с сервером"});
-          })
-          .finally(() => {
-            console.log("finally");
-            
-            this.enable();
-          })
-      }
-    }
   ],
 };
