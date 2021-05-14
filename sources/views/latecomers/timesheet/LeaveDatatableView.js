@@ -20,7 +20,14 @@ export default class LeaveDatatableView extends BaseDatatableView {
 					$$("right:slider_h").setValue(hours);
 					$$("right:slider_m").setValue(minutes);
 				},
-				onKeyPress: this.onKeyPressHandler(leaveCollection.getData())
+				onKeyPress: this.onKeyPressHandler(leaveCollection.getData()),
+				onAfterDrag: function (context, e) {
+					// console.log("onDragOut");
+					
+					console.log(context);
+					
+					return false;
+				}
 			},
 			...configs,
 		};

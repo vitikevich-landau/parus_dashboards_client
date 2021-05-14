@@ -73,18 +73,21 @@ export default class BaseDatatableView extends JetView {
 	
 	onBeforeDropHandler(dataStore, options) {
 		return function (ctx, e) {
-			const {from, source} = ctx;
+			const {from, source, to} = ctx;
 			const now = new Date;
 			
-			dataStore.add({
-				ID: webix.uid(),
-				FULLNAME: from.getItem(source[0]).FULLNAME,
-				DT: now,
-				TM: now,
-				...options
-			}, 0);
+			if (from.config.id === "employees_list") {
+				dataStore.add({
+					ID: webix.uid(),
+					FULLNAME: from.getItem(source[0]).FULLNAME,
+					DT: now,
+					TM: now,
+					...options
+				}, 0);
+				
+				this.select(dataStore.getFirstId());
+			}
 			
-			this.select(dataStore.getFirstId());
 			
 			return false;
 		};
@@ -166,7 +169,7 @@ export default class BaseDatatableView extends JetView {
 				}
 			],
 			editable: true,
-			drag: "target",
+			drag: true,
 			editaction: "custom",
 			select: true,
 			css: "unselectable",
