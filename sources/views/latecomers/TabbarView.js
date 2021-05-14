@@ -10,7 +10,7 @@ export class TabbarView extends JetView {
 			height: 36,
 			options: [
 				{value: "Табель", id: "workSheet"},
-				{value: "ВЫХОД/ВХОД", id: "timeSheet"},
+				{value: "ВХОД/ВЫХОД", id: "timeSheet"},
 			]
 		};
 	}
