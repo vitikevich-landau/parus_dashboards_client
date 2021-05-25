@@ -10,7 +10,7 @@ export default class EmployeesListView extends JetView {
 			id: "employees_list",
 			width: 300,
 			// data: records,
-			template: "#index#. #FULLNAME#",
+			template: "#ROWNUM#. #FULLNAME#",
 			select: true,
 			drag: true,
 			scroll: "auto",
@@ -47,18 +47,5 @@ export default class EmployeesListView extends JetView {
 		
 		_$view.$view.oncontextmenu = () => false;
 	}
-	
-	ready(_$view, _$url) {
-		super.ready(_$view, _$url);
-		
-		/***
-		 * 	Add dynamic indexes
-		 * */
-		_$view.data.each(function (obj, i) {
-			obj.index = i + 1;
-		});
-		
-		_$view.refresh();
-		
-	}
+
 }
