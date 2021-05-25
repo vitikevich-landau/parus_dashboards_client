@@ -8,7 +8,7 @@ export default class MyApp extends JetApp{
 			version : VERSION,
 			router 	: BUILD_AS_MODULE ? EmptyRouter : HashRouter,
 			debug 	: !PRODUCTION,
-			start 	: "/top/dashboards"
+			start 	: "/top/latecomers_charts"
 		};
 
 		super({ ...defaults, ...config });
