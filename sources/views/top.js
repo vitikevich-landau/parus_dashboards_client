@@ -21,16 +21,23 @@ export default class TopView extends JetView {
 			view: "sidebar",
 			id: "sidebar:menu",
 			css: "webix_sidebar webix_dark",
-			width: 220,
+			width: 240,
 			scroll: "auto",
 			data: [
 				{
 					id: "dashboards",
 					icon: "mdi mdi-view-dashboard",
 					value: "Панель Мониторинга",
+					data: [
+						{id: "latecomers_charts", value: "Опоздания"},
+						{id: "overdue_events", value: "Просроченные события"}
+					]
 				},
 				{
-					id: "tables", icon: "mdi mdi-table", value: "Таблицы с данными", data: [
+					id: "tables",
+					icon: "mdi mdi-table",
+					value: "Таблицы с данными",
+					data: [
 						{id: "data", value: "График дежурства"},
 						{id: "latecomers", value: "Табель"},
 					]
@@ -79,7 +86,7 @@ export default class TopView extends JetView {
 		 * */
 		_$view.$view.oncontextmenu = () => false;
 	}
-
+	
 	
 	ready(_$view, _$url) {
 		super.ready(_$view, _$url);
@@ -92,17 +99,17 @@ export default class TopView extends JetView {
 			"Arrival time editor",
 			"left"
 		);
-
+		
 		this._rightPopup = new TimeEditorPopupView(
 			this.app,
 			"Leave time editor",
 			"right"
 		);
-
+		
 		webix.ui(
 			this._leftPopup.config()
 		);
-
+		
 		webix.ui(
 			this._rightPopup.config()
 		);
