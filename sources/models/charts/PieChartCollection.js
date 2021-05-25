@@ -14,4 +14,4 @@ class PieChartCollection extends BaseChartCollection {
 	}
 }
 
-export const pieChartCollection = new PieChartCollection("pie_chart");
+export const pieChartCollection = new PieChartCollection("latecomers:pie_chart");

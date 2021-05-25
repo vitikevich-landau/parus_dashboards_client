@@ -4,7 +4,7 @@ import {pieChartCollection} from "../../../models/charts/PieChartCollection";
 export default class PieChartView extends JetView {
 	config() {
 		return {
-			id: "pie_chart",
+			id: "latecomers:pie_chart",
 			// width: 500,
 			gravity: .5,
 			view: "chart",

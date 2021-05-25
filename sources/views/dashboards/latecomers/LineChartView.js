@@ -7,7 +7,7 @@ export default class LineChartView extends JetView {
 	config() {
 		return {
 			view: "chart",
-			id: "line_chart",
+			id: "latecomers:line_chart",
 			height: 350,
 			type: "line",
 			value: "#lates#",

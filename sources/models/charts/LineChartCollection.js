@@ -14,4 +14,4 @@ class LineChartCollection extends BaseChartCollection {
 	}
 }
 
-export const lineChartCollection = new LineChartCollection("line_chart");
+export const lineChartCollection = new LineChartCollection("latecomers:line_chart");
