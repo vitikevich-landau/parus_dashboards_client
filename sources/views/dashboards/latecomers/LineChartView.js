@@ -1,6 +1,6 @@
 import {JetView} from "webix-jet";
-import {API_SERVICE_URL, COLORS} from "../../config";
-import {lineChartCollection} from "../../models/charts/LineChartCollection";
+import {COLORS} from "../../../config";
+import {lineChartCollection} from "../../../models/charts/LineChartCollection";
 
 
 export default class LineChartView extends JetView {
