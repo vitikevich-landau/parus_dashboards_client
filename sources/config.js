@@ -1,6 +1,8 @@
-// export const API_SERVICE_URL = "http://192.168.1.200:7700/api";
 // export const API_SERVICE_URL = "/api";
 export const API_SERVICE_URL = "http://localhost:3000/api";
+export const PIE_CHART_URL = API_SERVICE_URL + "/dashboards/pie"
+export const LINE_CHART_URL = API_SERVICE_URL + "/dashboards/chart"
+
 export const COLORS = {
 	c_ee4339: "#ee4339",
 	c_ee9336: "#ee9336",

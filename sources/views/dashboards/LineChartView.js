@@ -1,18 +1,13 @@
 import {JetView} from "webix-jet";
 import {API_SERVICE_URL, COLORS} from "../../config";
+import {lineChartCollection} from "../../models/charts/LineChartCollection";
 
 
-export default class ChartLineView extends JetView {
+export default class LineChartView extends JetView {
 	config() {
-		const today = new Date();
-		const month = today.getMonth() + 1;
-		const year = today.getFullYear();
-		
 		return {
 			view: "chart",
-			id: "chartLine",
-			// data: chartCollection,
-			url: `${API_SERVICE_URL}/dashboards/chart/${month}/${year}`,
+			id: "line_chart",
 			height: 350,
 			type: "line",
 			value: "#lates#",
@@ -51,20 +46,18 @@ export default class ChartLineView extends JetView {
 			// 	width: 100,
 			// 	margin: 8
 			// },
-			on: {
-				onBeforeLoad: function () {
-					webix.extend(this, webix.ProgressBar);
-					this.showProgress();
-				},
-				onAfterLoad: function () {
-					this.hideProgress();
-				}
-			}
 		};
 	}
 	
 	init(_$view, _$) {
 		super.init(_$view, _$);
 		
+		_$view.parse(lineChartCollection.data);
+	}
+	
+	urlChange(_$view, _$url) {
+		super.urlChange(_$view, _$url);
+		
+		lineChartCollection.refresh();
 	}
 }
