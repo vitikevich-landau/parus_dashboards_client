@@ -2,13 +2,13 @@ export class BaseChartCollection {
 	constructor(chartId) {
 		this._data = new webix.DataCollection({
 			on: {
-				onBeforeLoad: function () {
+				onBeforeLoad: () => {
 					webix.delay(() => {
 						webix.extend($$(chartId), webix.ProgressBar);
 						$$(chartId).showProgress();
 					});
 				},
-				onAfterLoad: function () {
+				onAfterLoad: () => {
 					$$(chartId).hideProgress();
 				}
 			}
