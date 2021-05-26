@@ -1,4 +1,4 @@
-import {PIE_CHART_URL} from "../../config";
+import {LATECOMERS_PIE_CHART_URL} from "../../config";
 import {BaseChartCollection} from "./BaseChartCollection";
 import {Utils} from "jet-views/dashboards/Utils";
 
@@ -10,7 +10,7 @@ class PieChartCollection extends BaseChartCollection {
 	url() {
 		const {month, year} = Utils.monthYear();
 		
-		return `${PIE_CHART_URL}/${month}/${year}`;
+		return `${LATECOMERS_PIE_CHART_URL}/${month}/${year}`;
 	}
 }
 

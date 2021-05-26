@@ -10,8 +10,9 @@ export default class LineChartView extends JetView {
 			id: "latecomers:line_chart",
 			height: 350,
 			type: "line",
-			value: "#lates#",
+			value: "#val#",
 			// borderless: true,
+			label: "#val#",
 			item: {
 				borderColor: COLORS.c_1293f8,
 			},
@@ -25,13 +26,13 @@ export default class LineChartView extends JetView {
 			},
 			offset: 0,
 			yAxis: {
-				title: "Значение",
+				title: "Количество",
 				template: function (v) {
 					return (v % 1 ? "" : v);
 				},
 			},
 			tooltip: {
-				template: "Количество: #lates#"
+				template: "Опозданий: #val#"
 			},
 			// legend: {
 			// 	values: [
