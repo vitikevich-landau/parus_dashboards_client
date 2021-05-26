@@ -1,6 +1,6 @@
 import {BaseChartCollection} from "./BaseChartCollection";
 import {Utils} from "jet-views/dashboards/Utils";
-import {LATECOMERS_LINE_CHART_URL} from "../../config";
+import {LATECOMERS_LINE_CHART_URL} from "../../../config";
 
 class LineChartCollection extends BaseChartCollection {
 	constructor(chartId) {

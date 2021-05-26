@@ -1,6 +1,6 @@
 import {JetView} from "webix-jet";
 import {COLORS} from "../../../config";
-import {lineChartCollection} from "../../../models/charts/LineChartCollection";
+import {lineChartCollection} from "../../../models/charts/latecomers/LineChartCollection";
 
 
 export default class LineChartView extends JetView {
@@ -8,11 +8,11 @@ export default class LineChartView extends JetView {
 		return {
 			view: "chart",
 			id: "latecomers:line_chart",
-			height: 350,
+			// height: 350,
 			type: "line",
-			value: "#val#",
+			value: "#VAL#",
 			// borderless: true,
-			label: "#val#",
+			label: "#VAL#",
 			item: {
 				borderColor: COLORS.c_1293f8,
 			},
@@ -21,8 +21,8 @@ export default class LineChartView extends JetView {
 				width: 3
 			},
 			xAxis: {
-				template: "#day#",
-				title: "Дни"
+				template: "#DAY#",
+				title: "День"
 			},
 			offset: 0,
 			yAxis: {
@@ -32,20 +32,26 @@ export default class LineChartView extends JetView {
 				},
 			},
 			tooltip: {
-				template: "Опозданий: #val#"
+				template: obj => {
+					if (obj.FIO_LIST) {
+						const names = obj.FIO_LIST.split(";").filter(v => v);
+						return names.join("<br>");
+					}
+					return "Нет данных";
+				}
 			},
 			// legend: {
 			// 	values: [
 			// 		{
-			// 			text: today.toLocaleString("default", {month: "long"}),
+			// 			text: new Date().toLocaleString("default", {month: "long"}),
 			// 			color: COLORS.c_1293f8
 			// 		}
 			// 	],
-			// 	align: "right",
-			// 	valign: "middle",
-			// 	layout: "y",
-			// 	width: 100,
-			// 	margin: 8
+			// 	align: "center",
+			// 	valign: "top",
+			// 	layout: "x",
+			// 	// width: 100,
+			// 	// margin: 8
 			// },
 		};
 	}

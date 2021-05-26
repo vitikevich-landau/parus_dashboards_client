@@ -9,7 +9,7 @@ export default class TopView extends JetView {
 			view: "toolbar",
 			css: "webix_dark",
 			elements: [
-				{view: "icon", icon: "mdi mdi-menu", click: () => $$("sidebar:menu").toggle()},
+				{view: "icon", icon: "mdi mdi-menu", click: () => $$("left_sidebar:menu").toggle()},
 				{view: "label", label: "PARUS BUSINESS"},
 				{},
 				// {view: "icon", icon: "mdi mdi-comment", badge: 4},
@@ -17,9 +17,9 @@ export default class TopView extends JetView {
 			]
 		};
 		
-		const sidebar = {
+		const leftSidebar = {
 			view: "sidebar",
-			id: "sidebar:menu",
+			id: "left_sidebar:menu",
 			css: "webix_sidebar webix_dark",
 			width: 240,
 			scroll: "auto",
@@ -60,7 +60,7 @@ export default class TopView extends JetView {
 				toolbar,
 				{
 					cols: [
-						sidebar,
+						leftSidebar,
 						{$subview: true},
 					]
 				}
@@ -74,7 +74,7 @@ export default class TopView extends JetView {
 		/***
 		 *  Menu plugin
 		 * */
-		this.use(plugins.Menu, "sidebar:menu");
+		this.use(plugins.Menu, "left_sidebar:menu");
 		
 		/***
 		 *  Set Locale

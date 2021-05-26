@@ -1,5 +1,5 @@
 import {JetView} from "webix-jet";
-import {pieChartCollection} from "../../../models/charts/PieChartCollection";
+import {pieChartCollection} from "../../../models/charts/latecomers/PieChartCollection";
 
 export default class PieChartView extends JetView {
 	config() {

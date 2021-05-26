@@ -1,7 +1,13 @@
 // export const API_SERVICE_URL = "/api";
 export const API_SERVICE_URL = "http://localhost:3000/api";
-export const PIE_CHART_URL = API_SERVICE_URL + "/dashboards/pie"
-export const LINE_CHART_URL = API_SERVICE_URL + "/dashboards/chart"
+export const LATECOMERS_PIE_CHART_URL = API_SERVICE_URL
+	+ "/dashboards/latecomers/pie";
+export const LATECOMERS_LINE_CHART_URL = API_SERVICE_URL
+	+ "/dashboards/latecomers/line";
+export const LATECOMERS_DETAILS_DATATABLE_URL = API_SERVICE_URL
+	+ "/dashboards/latecomers/details";
+export const LATECOMERS_BAR_CHART_URL = API_SERVICE_URL
+	+ "/dashboards/latecomers/bar";
 
 export const COLORS = {
 	c_ee4339: "#ee4339",

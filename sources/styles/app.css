@@ -9,6 +9,7 @@
 .activve {
     background: #edeff5;
 }
+
 .bordered {
     border: 1px solid #5ccce7 !important;
 }
@@ -21,6 +22,10 @@
 div.webix_cell.latecomers-selected-cell {
     /*border: 1px solid #0f5768;*/
     background-color: #DDDDFF !important;
+}
+
+.latecomers-active {
+    background: #F0DCB6;
 }
 
 .latecomers-vacation {

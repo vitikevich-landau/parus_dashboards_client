@@ -1,4 +1,4 @@
-import {LATECOMERS_PIE_CHART_URL} from "../../config";
+import {LATECOMERS_PIE_CHART_URL} from "../../../config";
 import {BaseChartCollection} from "./BaseChartCollection";
 import {Utils} from "jet-views/dashboards/Utils";
 
