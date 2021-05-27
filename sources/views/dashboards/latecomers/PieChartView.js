@@ -30,11 +30,4 @@ export default class PieChartView extends JetView {
 		
 		_$view.parse(pieChartCollection.data);
 	}
-	
-	urlChange(_$view, _$url) {
-		super.urlChange(_$view, _$url);
-		
-		pieChartCollection.refresh();
-	}
-
 }

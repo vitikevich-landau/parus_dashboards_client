@@ -29,11 +29,4 @@ export default class BarChartView extends JetView {
 		
 		_$view.parse(barChartCollection.data);
 	}
-	
-	urlChange(_$view, _$url) {
-		super.urlChange(_$view, _$url);
-		
-		barChartCollection.refresh();
-	}
-
 }

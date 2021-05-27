@@ -15,6 +15,8 @@ export default class LineChartView extends JetView {
 			label: "#VAL#",
 			item: {
 				borderColor: COLORS.c_1293f8,
+				shadow: true,
+				radius: 4,
 			},
 			line: {
 				color: COLORS.c_1293f8,
@@ -60,11 +62,5 @@ export default class LineChartView extends JetView {
 		super.init(_$view, _$);
 		
 		_$view.parse(lineChartCollection.data);
-	}
-	
-	urlChange(_$view, _$url) {
-		super.urlChange(_$view, _$url);
-		
-		lineChartCollection.refresh();
 	}
 }

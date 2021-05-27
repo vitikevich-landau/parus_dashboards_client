@@ -2,30 +2,53 @@ import LineChartView from "jet-views/dashboards/latecomers/LineChartView";
 import DatatableView from "jet-views/dashboards/latecomers/DatatableView";
 import PieChartView from "jet-views/dashboards/latecomers/PieChartView";
 import BarChartView from "jet-views/dashboards/latecomers/BarChartView";
+import ControlSidebar from "jet-views/dashboards/latecomers/ControlSidebar";
 
 export default {
-	cols: [
+	rows: [
 		{
-			id: "latecomers_charts",
-			rows: [
+			view: "toolbar",
+			elements: [
+				{},
 				{
-					cols: [
-						PieChartView,
-						{view: "resizer"},
-						LineChartView,
-					]
+					view: "icon",
+					icon: "mdi mdi-menu",
+					click: () => {
+						const $$controls = $$("latecomers:control_panel");
+						
+						if ($$controls.isVisible()) {
+							$$controls.hide();
+						} else {
+							$$controls.show();
+						}
+					}
 				},
-				{view: "resizer"},
-				{
-					cols: [
-						DatatableView,
-						{view: "resizer"},
-						BarChartView
-					]
-				}
 			]
 		},
-		{view: "resizer"},
-		// {template: "control panel", width: 280}
-	],
+		{
+			cols: [
+				{
+					id: "latecomers_charts",
+					rows: [
+						{
+							cols: [
+								PieChartView,
+								{view: "resizer"},
+								LineChartView,
+							]
+						},
+						{view: "resizer"},
+						{
+							cols: [
+								DatatableView,
+								{view: "resizer"},
+								BarChartView
+							]
+						},
+					]
+				},
+				ControlSidebar
+			],
+		}
+	]
 };

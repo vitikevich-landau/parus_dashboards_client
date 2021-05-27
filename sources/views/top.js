@@ -1,6 +1,6 @@
-import {JetView, plugins} from "webix-jet";
-import {createState, link} from "jet-restate";
+import {JetView} from "webix-jet";
 import TimeEditorPopupView from "jet-views/latecomers/timesheet/TimeEditorPopupView";
+import SidebarMenuView from "jet-views/SidebarMenuView";
 
 
 export default class TopView extends JetView {
@@ -17,50 +17,13 @@ export default class TopView extends JetView {
 			]
 		};
 		
-		const leftSidebar = {
-			view: "sidebar",
-			id: "left_sidebar:menu",
-			css: "webix_sidebar webix_dark",
-			width: 240,
-			scroll: "auto",
-			data: [
-				{
-					id: "dashboards",
-					icon: "mdi mdi-view-dashboard",
-					value: "Панель Мониторинга",
-					data: [
-						{id: "latecomers_charts", value: "Опоздания"},
-						{id: "overdue_events", value: "Просроченные события"}
-					]
-				},
-				{
-					id: "tables",
-					icon: "mdi mdi-table",
-					value: "Таблицы с данными",
-					data: [
-						{id: "data", value: "График дежурства"},
-						{id: "latecomers", value: "Табель"},
-					]
-				},
-				// {
-				//   id: "layouts",
-				//   icon: "mdi mdi-view-column",
-				//   value: "Layouts",
-				//   data: [
-				//     {id: "accordions", value: "Accordions"},
-				//     {id: "portlets", value: "Portlets"}
-				//   ]
-				// }
-			]
-		};
-		
 		return {
 			id: "top",
 			rows: [
 				toolbar,
 				{
 					cols: [
-						leftSidebar,
+						SidebarMenuView,
 						{$subview: true},
 					]
 				}
@@ -70,11 +33,6 @@ export default class TopView extends JetView {
 	
 	init(_$view, _$) {
 		super.init(_$view, _$);
-		
-		/***
-		 *  Menu plugin
-		 * */
-		this.use(plugins.Menu, "left_sidebar:menu");
 		
 		/***
 		 *  Set Locale
