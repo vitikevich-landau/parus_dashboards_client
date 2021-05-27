@@ -1,5 +1,4 @@
 import {BaseChartCollection} from "./BaseChartCollection";
-import {Utils} from "jet-views/dashboards/Utils";
 import {LATECOMERS_LINE_CHART_URL} from "../../../config";
 
 class LineChartCollection extends BaseChartCollection {
@@ -7,10 +6,8 @@ class LineChartCollection extends BaseChartCollection {
 		super(chartId);
 	}
 	
-	url() {
-		const {month, year} = Utils.monthYear();
-		
-		return `${LATECOMERS_LINE_CHART_URL}/${month}/${year}`;
+	url(day, month, year) {
+		return `${LATECOMERS_LINE_CHART_URL}/${day}/${month}/${year}`;
 	}
 }
 

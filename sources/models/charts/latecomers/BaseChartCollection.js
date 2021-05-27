@@ -18,9 +18,9 @@ export class BaseChartCollection {
 	url() {
 	}
 	
-	refresh() {
+	refresh(day, month, year) {
 		this.data.clearAll();
-		return this.data.load(this.url());
+		return this.data.load(this.url(day, month, year));
 	}
 	
 	get data() {

@@ -6,8 +6,8 @@ class DatatableDetailsCollection extends BaseChartCollection {
 		super(chartId);
 	}
 	
-	url() {
-		return LATECOMERS_DETAILS_DATATABLE_URL;
+	url(day, month, year) {
+		return `${LATECOMERS_DETAILS_DATATABLE_URL}/${day}/${month}/${year}`;
 	}
 }
 
