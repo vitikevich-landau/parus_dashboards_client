@@ -16,7 +16,7 @@ export default class LineChartView extends JetView {
 			item: {
 				borderColor: COLORS.c_1293f8,
 				shadow: true,
-				radius: 4,
+				radius: 5,
 			},
 			line: {
 				color: COLORS.c_1293f8,
