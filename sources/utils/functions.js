@@ -44,3 +44,16 @@ export const employeesFilter = obj => Object
 	.values(employees.data.pull)
 	.filter(v => v.$checked)
 	.some(v => v.FULLNAME === obj.FULLNAME);
+
+
+export const splitArrayByHalf = array => {
+	const left = array.slice(0, array.length / 2);
+	const right = array.slice(array.length / 2, array.length);
+	
+	return {left, right};
+}
+
+export const shortFIO = fio => {
+	const [surname, name, patronymic] = fio.split(" ");
+	return `${surname} ${name[0]}. ${patronymic[0]}.`;
+}

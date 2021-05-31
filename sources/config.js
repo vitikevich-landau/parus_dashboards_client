@@ -9,6 +9,9 @@ export const LATECOMERS_DETAILS_DATATABLE_URL = API_SERVICE_URL
 export const LATECOMERS_BAR_CHART_URL = API_SERVICE_URL
 	+ "/dashboards/latecomers/bar";
 
+export const OVERDUE_GAGE_CHART_URL = API_SERVICE_URL
+	+ "/dashboards/overdue/gage";
+
 export const COLORS = {
 	c_ee4339: "#ee4339",
 	c_ee9336: "#ee9336",
