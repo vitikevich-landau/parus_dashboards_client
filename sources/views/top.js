@@ -34,6 +34,8 @@ export default class TopView extends JetView {
 	init(_$view, _$) {
 		super.init(_$view, _$);
 		
+		webix.Date.startOnMonday = true;
+		
 		/***
 		 *  Set Locale
 		 * */
