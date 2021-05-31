@@ -41,8 +41,6 @@ export default class ControlSidebar extends JetView {
 							
 							const $$details = $$("latecomers:details");
 							
-							console.log($$details);
-							
 							datatableDetailsCollection.refresh(day, month, year)
 								.then(() => {
 									const {pull} = datatableDetailsCollection.data.data;
@@ -54,7 +52,9 @@ export default class ControlSidebar extends JetView {
 										const currRow = $$details.getItem(row);
 										
 										if (currRow.OP_MONTH === max) {
-											$$details.addRowCss(currRow.id, "datatable-skipped");
+											if (max > 0) {
+												$$details.addRowCss(currRow.id, "datatable-skipped");
+											}
 										} else if (currRow.OP_MONTH) {
 											$$details.addRowCss(currRow.id, "latecomers-active");
 										}
