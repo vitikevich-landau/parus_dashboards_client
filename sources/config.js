@@ -11,6 +11,8 @@ export const LATECOMERS_BAR_CHART_URL = API_SERVICE_URL
 
 export const OVERDUE_GAGE_CHART_URL = API_SERVICE_URL
 	+ "/dashboards/overdue/gage";
+export const OVERDUE_COMPLEX_CHART_URL = API_SERVICE_URL
+	+ "/dashboards/overdue/complex";
 
 export const COLORS = {
 	c_ee4339: "#ee4339",
@@ -30,4 +32,5 @@ export const COLORS = {
 	c_ea1e63: "#ea1e63",
 	c_f16997: "#f16997",
 	c_f4574c: "#f4574c",
+	c_eeeeee: "#eeeeee",
 };

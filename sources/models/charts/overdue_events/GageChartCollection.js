@@ -3,8 +3,8 @@ import {OVERDUE_GAGE_CHART_URL} from "../../../config";
 
 class GageChartCollection extends BaseChartCollection {
 	
-	url(day, month, year) {
-		return `${OVERDUE_GAGE_CHART_URL}/${day}/${month}/${year}`;
+	url(day, month, year, type = 3) {
+		return `${OVERDUE_GAGE_CHART_URL}/${day}/${month}/${year}/${type}`;
 	}
 }
 

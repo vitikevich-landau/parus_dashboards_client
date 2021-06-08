@@ -15,12 +15,12 @@ export class BaseChartCollection {
 		});
 	}
 	
-	url() {
+	url(...args) {
 	}
 	
-	refresh(day, month, year) {
+	refresh(...args) {
 		this.data.clearAll();
-		return this.data.load(this.url(day, month, year));
+		return this.data.load(this.url(...args));
 	}
 	
 	get data() {
