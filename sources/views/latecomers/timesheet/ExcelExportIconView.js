@@ -7,14 +7,14 @@ export class ExcelExportIconView extends JetView {
 			icon: "mdi mdi-microsoft-excel",
 			tooltip: "Скачать в Excel",
 			click: function () {
-				const $$left = $$("left");
-				const $$right = $$("right");
+				const $$enter = $$("enter:datatable");
+				const $$exit = $$("exit:datatable");
 				const $$excel = $$("excel:export");
 				
-				const leftOrderCopy = webix.copy($$left.data.order);
-				const leftPullCopy = webix.copy($$left.data.pull);
-				const rightOrderCopy = webix.copy($$right.data.order);
-				const rightPullCopy = webix.copy($$right.data.pull);
+				const leftOrderCopy = webix.copy($$enter.data.order);
+				const leftPullCopy = webix.copy($$enter.data.pull);
+				const rightOrderCopy = webix.copy($$exit.data.order);
+				const rightPullCopy = webix.copy($$exit.data.pull);
 				
 				const filtered = leftOrderCopy
 					.map(v => leftPullCopy[v])

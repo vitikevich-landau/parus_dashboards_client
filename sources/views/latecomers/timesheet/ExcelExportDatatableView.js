@@ -1,11 +1,11 @@
-import BaseDatatableView from "jet-views/latecomers/timesheet/BaseDatatableView";
+import {JetView} from "webix-jet";
+import {configs} from "jet-views/latecomers/timesheet/config";
 
-export class ExcelExportDatatableView extends BaseDatatableView {
+export class ExcelExportDatatableView extends JetView {
 	config() {
-		const {view, columns} = super.config();
-		
+		const {columns} = configs;
 		return {
-			view,
+			view: "datatable",
 			id: "excel:export",
 			hidden: true,
 			columns

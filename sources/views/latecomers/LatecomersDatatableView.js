@@ -1,6 +1,7 @@
 import {JetView} from "webix-jet";
 import {addPickedDateToDtItems, generateColumns} from "jet-views/latecomers/functions";
 import {API_SERVICE_URL} from "../../config";
+import report_card_period_window from "jet-views/latecomers/report_card_period_window";
 
 export default class LatecomersDatatableView extends JetView {
 	config() {
@@ -14,10 +15,21 @@ export default class LatecomersDatatableView extends JetView {
 		return {
 			view: "datatable",
 			id: "latecomers",
-			url: `${API_SERVICE_URL}/latecomers`,
-			save: function (id, operation, update) {
+			// url: `${API_SERVICE_URL}/latecomers`,
+			url() {
+				const promise = webix.ajax(`${API_SERVICE_URL}/latecomers`);
+				
+				promise
+					.then(response => response.json())
+					.then(json => {/*console.log(json)*/})
+					.catch(() => webix.message({type: "error", text: "Ошибка соединения с сервером"}));
+				
+				return promise;
+			},
+			save(id, operation, update) {
 				this.showProgress({type: "bottom"});
 				const data = addPickedDateToDtItems(this, $$("datepicker"));
+				
 				webix
 					.ajax()
 					.post(`${API_SERVICE_URL}/latecomers`, data)
@@ -33,6 +45,7 @@ export default class LatecomersDatatableView extends JetView {
 			editaction: "dblclick",
 			leftSplit: 1,
 			resizeColumn: {headerOnly: true, size: 12},
+			navigation: false,
 			columns: [
 				{
 					id: "FULLNAME",
@@ -45,12 +58,12 @@ export default class LatecomersDatatableView extends JetView {
 				...generateColumns(days)
 			],
 			on: {
-				onBeforeLoad: function () {
+				onBeforeLoad() {
 					webix.extend(this, webix.ProgressBar);
 					
 					this.showProgress();
 				},
-				onAfterLoad: function () {
+				onAfterLoad() {
 					this.hideProgress();
 					
 					/***
@@ -69,8 +82,13 @@ export default class LatecomersDatatableView extends JetView {
 						this.refreshColumns();
 					});
 					
+					/***
+					 * 	Scroll to today column
+					 * */
+					this.showCell(1, `D${new Date().getDate()}`);
+					
 				},
-				onHeaderClick: function (id, e, target) {
+				onHeaderClick(id, e, target) {
 					let state = this.getState().sort;
 					if (state && state.dir === "desc") {
 						this.sort({
@@ -85,7 +103,7 @@ export default class LatecomersDatatableView extends JetView {
 						return false;
 					}
 				},
-				onItemClick: function (id, event, node) {
+				onItemClick(id, event, node) {
 					const pickedMon = $$("datepicker")
 						.getValue()
 						.getMonth() + 1;
@@ -144,7 +162,7 @@ export default class LatecomersDatatableView extends JetView {
 					// this.addCellCss(id.row, id.column, "latecomers-selected-cell");
 					
 				},
-				onAfterEditStop: function (state, editor, ignoreUpdate) {
+				onAfterEditStop(state, editor, ignoreUpdate) {
 					if (!state.value && !state.old) {
 						return;
 					}
@@ -178,6 +196,14 @@ export default class LatecomersDatatableView extends JetView {
 		super.destroy();
 		
 		clearInterval(this.refreshDataInterval);
+	}
+	
+	ready(_$view, _$url) {
+		super.ready(_$view, _$url);
+		
+		// webix.ui(report_card_ctx_menu).attachTo(_$view);
+		webix.ui(report_card_period_window);
+		webix.extend($$("window:period"), webix.ProgressBar);
 	}
 	
 }

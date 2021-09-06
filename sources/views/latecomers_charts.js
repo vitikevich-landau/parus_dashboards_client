@@ -32,7 +32,21 @@ export default {
 					rows: [
 						{
 							cols: [
-								PieChartView,
+								{
+									gravity: .6,
+									rows: [
+										{
+											template: "За месяц",
+											height: 35,
+											css: {
+												"font-size": "140%",
+												"color": "darkred",
+												"text-align": "right"
+											}
+										},
+										PieChartView
+									]
+								},
 								{view: "resizer"},
 								LineChartView,
 							]

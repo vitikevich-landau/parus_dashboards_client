@@ -15,8 +15,29 @@ export const proxyWithThrottle = url => webix.proxy("rest", url, {
 		 * */
 		promise
 			.then(response => response.json())
-			.then(json => console.log(json))
+			.then(json => console.log(json));
 		
 		return promise;
 	}, 500)
 });
+
+export function loadData(url) {
+	return function () {
+		return webix.ajax().get(url)
+			.then(response => response.json())
+			.then(json => {
+				return json.map(v => {
+					const data = {...v};
+					const [date] = v["DT"].split("T");
+					const [, time] = v["TM"].split("T");
+					const [year, month, day] = date.split("-");
+					const [hours, minutes] = time.split(":");
+					
+					data["DT"] = new Date(Date.UTC(year, month - 1, day));
+					data["TM"] = new Date(Date.UTC(year, month - 1, day, hours, minutes));
+					
+					return data;
+				});
+			});
+	};
+}

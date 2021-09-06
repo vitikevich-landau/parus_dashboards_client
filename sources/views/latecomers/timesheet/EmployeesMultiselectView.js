@@ -1,8 +1,8 @@
 import {JetView} from "webix-jet";
 import {employees} from "../../../models/employees";
-import {arrivalCollection} from "../../../models/ArrivalCollection";
-import {leaveCollection} from "../../../models/LeaveCollection";
 import {employeesFilter, fromDateFilter, toDateFilter} from "../../../utils/functions";
+import {enterCollection} from "../../../models/enterCollection";
+import {exitCollection} from "../../../models/exitCollection";
 
 export default class EmployeesMultiselectView extends JetView {
 	config() {
@@ -26,12 +26,12 @@ export default class EmployeesMultiselectView extends JetView {
 					const fromValue = $$("from:datepicker").getValue();
 					const toValue = $$("to:datepicker").getValue();
 					
-					arrivalCollection.getData().filter(
+					enterCollection.filter(
 						v => fromDateFilter(v, fromValue)
 							&& toDateFilter(v, toValue)
 							&& employeesFilter(v)
 					);
-					leaveCollection.getData().filter(
+					exitCollection.filter(
 						v => fromDateFilter(v, fromValue)
 							&& toDateFilter(v, toValue)
 							&& employeesFilter(v)

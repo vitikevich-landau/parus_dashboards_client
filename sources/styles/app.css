@@ -1,3 +1,14 @@
+.webix_column>div.webix_column_select,
+.webix_column>div.webix_row_select {
+    color: inherit;
+    font-weight: 500;
+}
+
+.options-suggest {
+    color: blue;
+    font-family: monospace;
+}
+
 .green {
     color: green;
 }
@@ -12,6 +23,7 @@
 
 .bordered {
     border: 1px solid #5ccce7 !important;
+    font-weight: 600 !important;
 }
 
 .pie-inner-text .webix_canvas_text {

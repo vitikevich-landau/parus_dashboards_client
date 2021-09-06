@@ -1,6 +1,8 @@
 import {JetView} from "webix-jet";
-import TimeEditorPopupView from "jet-views/latecomers/timesheet/TimeEditorPopupView";
 import SidebarMenuView from "jet-views/SidebarMenuView";
+import {timeEditorPopup as exitTimeEditorPopup} from "jet-views/latecomers/timesheet/exit_time_editor";
+import {timeEditorPopup as enterTimeEditorPopup} from "jet-views/latecomers/timesheet/enter_time_editor";
+import {date} from "jet-views/latecomers/timesheet/config";
 
 
 export default class TopView extends JetView {
@@ -45,34 +47,12 @@ export default class TopView extends JetView {
 		 *  disable browser context menu
 		 * */
 		_$view.$view.oncontextmenu = () => false;
+		
+		webix.ui(exitTimeEditorPopup);
+		webix.ui(enterTimeEditorPopup);
+		
+		webix.editors.$popup = {
+			date
+		};
 	}
-	
-	
-	ready(_$view, _$url) {
-		super.ready(_$view, _$url);
-		
-		/***
-		 * 	Add popups to App
-		 * */
-		this._leftPopup = new TimeEditorPopupView(
-			this.app,
-			"Arrival time editor",
-			"left"
-		);
-		
-		this._rightPopup = new TimeEditorPopupView(
-			this.app,
-			"Leave time editor",
-			"right"
-		);
-		
-		webix.ui(
-			this._leftPopup.config()
-		);
-		
-		webix.ui(
-			this._rightPopup.config()
-		);
-	}
-	
 }

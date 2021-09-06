@@ -1,7 +1,8 @@
 import ControlSidebar from "jet-views/dashboards/overdue_events/ControlSidebar";
 import {JetView} from "webix-jet";
 import GageChartView from "jet-views/dashboards/overdue_events/GageChartView";
-import ComplexChartView from "jet-views/dashboards/overdue_events/ComplexChartView";
+import StackedBarChartView from "jet-views/dashboards/overdue_events/StackedBarChartView";
+import LineChartView from "jet-views/dashboards/overdue_events/LineChartView";
 
 
 export default class OverdueEventsView extends JetView {
@@ -31,7 +32,9 @@ export default class OverdueEventsView extends JetView {
 					cols: [
 						{
 							rows: [
-								ComplexChartView,
+								LineChartView,
+								{view: "resizer"},
+								StackedBarChartView,
 								{view: "resizer"},
 								{
 									cols: [
@@ -40,7 +43,6 @@ export default class OverdueEventsView extends JetView {
 								}
 							]
 						},
-						// {view: "resizer"},
 						ControlSidebar
 					],
 				},

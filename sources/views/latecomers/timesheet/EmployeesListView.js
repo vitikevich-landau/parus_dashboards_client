@@ -1,7 +1,7 @@
 import {JetView} from "webix-jet";
 import {employees} from "../../../models/employees";
-import {leaveCollection} from "../../../models/LeaveCollection";
-import {arrivalCollection} from "../../../models/ArrivalCollection";
+import {exitCollection} from "../../../models/exitCollection";
+import {enterCollection} from "../../../models/enterCollection";
 
 export default class EmployeesListView extends JetView {
 	config() {
@@ -20,9 +20,9 @@ export default class EmployeesListView extends JetView {
 					
 					if (from !== this) {
 						const dataSrote =
-							from.config.id === "right"
-								? leaveCollection.getData()
-								: arrivalCollection.getData();
+							from.config.id === "exit:datatable"
+								? exitCollection
+								: enterCollection;
 						
 						webix.confirm({
 							title: "Внимание!",

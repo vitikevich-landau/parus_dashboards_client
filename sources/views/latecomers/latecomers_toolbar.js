@@ -20,11 +20,10 @@ export default {
 					type: "month",
 					icons: true,
 					minDate: new Date(2021, 1, 1),
-					maxDate: new Date(new Date().getFullYear(), 11, 1),
 				}
 			},
 			on: {
-				onChange: function (newValue, oldValue, config) {
+				onChange(newValue, oldValue, config) {
 					/***
 					 *  - Удаляем столбцы
 					 *  - Генерим новые, в завасимости от выбранного месяца
@@ -71,17 +70,21 @@ export default {
 					latecomers$$.load(() => webix.ajax().get(
 						`${API_SERVICE_URL}/latecomers/${pickedMonth}/${pickedYear}`
 					));
-					
-					
 				}
 			},
 		},
 		{},
 		{
 			view: "icon",
+			icon: "mdi mdi-calendar-range",
+			tooltip: "Задать период (типы дней)",
+			click: () => $$("window:period").show()
+		},
+		{
+			view: "icon",
 			icon: "mdi mdi-microsoft-excel",
 			tooltip: "Скачать в Excel",
-			click: function () {
+			click() {
 				const pickerValue = $$("datepicker").getValue();
 				const date = webix.Date.dateToStr("%F %Y")(pickerValue);
 				

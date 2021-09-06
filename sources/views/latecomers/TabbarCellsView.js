@@ -1,14 +1,14 @@
 import {JetView} from "webix-jet";
-import latecomers_toolbar from "jet-views/latecomers/latecomers_toolbar";
-import LatecomersDatatableView from "jet-views/latecomers/LatecomersDatatableView";
 import EmployeesListView from "jet-views/latecomers/timesheet/EmployeesListView";
 import EmployeesMultiselectView from "jet-views/latecomers/timesheet/EmployeesMultiselectView";
 import {FromDatepickerView} from "jet-views/latecomers/timesheet/FromDatepickerView";
 import {ToDatepickerView} from "jet-views/latecomers/timesheet/ToDatepickerView";
 import {ExcelExportIconView} from "jet-views/latecomers/timesheet/ExcelExportIconView";
-import ArrivalDatatableView from "jet-views/latecomers/timesheet/ArrivalDatatableView";
-import LeaveDatatableView from "jet-views/latecomers/timesheet/LeaveDatatableView";
 import {ExcelExportDatatableView} from "jet-views/latecomers/timesheet/ExcelExportDatatableView";
+import ExitDatatableView from "jet-views/latecomers/timesheet/ExitDatatableView";
+import EnterDatatableView from "jet-views/latecomers/timesheet/EnterDatatableView";
+import latecomers_toolbar from "jet-views/latecomers/latecomers_toolbar";
+import LatecomersDatatableView from "jet-views/latecomers/LatecomersDatatableView";
 
 export class TabbarCellsView extends JetView {
 	config() {
@@ -16,7 +16,7 @@ export class TabbarCellsView extends JetView {
 			animate: {
 				type: "slide",
 				// direction:"top",
-				duration: 350
+				duration: 250
 			},
 			cells: [
 				{
@@ -43,8 +43,8 @@ export class TabbarCellsView extends JetView {
 								},
 								{
 									cols: [
-										{header: "ВЫХОД", body: LeaveDatatableView, id: "tabbar:exit"},
-										{header: "ВХОД", body: ArrivalDatatableView, id: "tabbar:enter"},
+										{header: "ВЫХОД", body: ExitDatatableView, id: "tabbar:exit"},
+										{header: "ВХОД", body: EnterDatatableView, id: "tabbar:enter"},
 										ExcelExportDatatableView
 									]
 								}
@@ -52,20 +52,12 @@ export class TabbarCellsView extends JetView {
 						}
 					]
 				}
-			]
+			],
 		};
 	}
 	
 	init(_$view, _$) {
 		super.init(_$view, _$);
-		
-		/***
-		 * 	url change, store reload
-		 * */
-	}
-	
-	ready(_$view, _$url) {
-		super.ready(_$view, _$url);
 		
 		webix.html.addCss(
 			$$("tabbar:exit")
@@ -82,7 +74,6 @@ export class TabbarCellsView extends JetView {
 				[0],
 			"green"
 		);
-		
 	}
 	
 }
