@@ -1,16 +1,32 @@
 import {JetView} from "webix-jet";
 import {
 	configs,
-	onAfterSelectHandler, onBeforeDropHandler,
+	onAfterSelectHandler,
+	OnBeforeDropHandler,
 	onItemClickHandler,
-	onItemDblClickHandler, onKeyPressHandler
+	onItemDblClickHandler,
+	onKeyPressHandler
 } from "jet-views/latecomers/timesheet/config";
 import {enterCollection} from "../../../models/enterCollection";
+import {exitCollection} from "../../../models/exitCollection";
 
 export default class EnterDatatableView extends JetView {
 	config() {
+		const {columns} = configs;
+		const [fullnameColumn] = columns;
+		const cols = [
+			fullnameColumn, {
+				id: "NOTE",
+				header: "Примечание",
+				fillspace: true,
+				// editor: "text"
+			},
+			...columns.slice(2)
+		];
+		
 		return {
 			...configs,
+			columns: cols,
 			id: "enter:datatable",
 			on: {
 				onItemDblClick: onItemDblClickHandler,
@@ -20,11 +36,18 @@ export default class EnterDatatableView extends JetView {
 					slider_m: "enter:slider_m"
 				}),
 				onKeyPress: onKeyPressHandler(enterCollection),
-				onBeforeDrop: onBeforeDropHandler(
+				// onBeforeDrop: onBeforeDropHandler(
+				// 	enterCollection,
+				// 	{ACTION: "ВХОД"}
+				// ),
+				onBeforeDrop: OnBeforeDropHandler(
 					enterCollection,
-					{ACTION: "ВХОД"}
-				)
-			}
+					exitCollection,
+					{ACTION: "ВХОД"},
+					{ACTION: "ВЫХОД"}
+				),
+				
+			},
 		};
 		
 	}

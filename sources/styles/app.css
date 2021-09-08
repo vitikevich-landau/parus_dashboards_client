@@ -37,7 +37,7 @@ div.webix_cell.latecomers-selected-cell {
 }
 
 .latecomers-active {
-    background: #F0DCB6;
+    background: #F0DCB6 !important;
 }
 
 .latecomers-vacation {

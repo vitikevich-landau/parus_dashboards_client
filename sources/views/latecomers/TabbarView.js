@@ -12,6 +12,7 @@ export class TabbarView extends JetView {
 		 * 	prev active tab
 		 * */
 		let prevTab = "workSheet";
+		let emplIDs = null;
 		
 		return {
 			view: "tabbar",
@@ -26,15 +27,37 @@ export class TabbarView extends JetView {
 			on: {
 				onAfterTabClick(id, e) {
 					if (prevTab !== id) {
+						/***
+						 * 	Drop filters
+						 * */
+						
 						if (id === "timeSheet") {
-							reloadTimeSheetTables(URL_TIMESHEET_ARRIVAL, enterCollection, $$("enter:datatable"));
-							reloadTimeSheetTables(URL_TIMESHEET_LEAVE, exitCollection, $$("exit:datatable"));
+							if (emplIDs) {
+								$$("employees:multiselect").setValue(emplIDs.split(","));
+							}
+							
+							$$("from:datepicker").setValue(null);
+							$$("to:datepicker").setValue(null);
+							
+							$$("timeSheet").disable();
+							
+							Promise.all([
+								reloadTimeSheetTables(URL_TIMESHEET_ARRIVAL, enterCollection, $$("enter:datatable")),
+								reloadTimeSheetTables(URL_TIMESHEET_LEAVE, exitCollection, $$("exit:datatable"))
+							])
+								.catch(() => webix.message({type: "error", text: "Ошибка соединения с сервером"}))
+								.finally(() => $$("timeSheet").enable());
 						} else {
 							reloadLatecomersTable(`${API_SERVICE_URL}/latecomers`, $$("latecomers"));
 						}
 					}
 					
 					prevTab = id;
+					
+					if (!emplIDs) {
+						emplIDs = $$("employees:multiselect").getValue();
+						
+					}
 				}
 			}
 		};
