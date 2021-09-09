@@ -52,9 +52,28 @@ function onClickHandler(action) {
 		const time = webix.i18n.timeFormatStr(cell.TM);
 		const [h, m] = time.split(":");
 		
+		/***
+		 * 	To change row color
+		 * */
+		if (this.config.id === "exit:slider_h") {
+			$$table.callEvent("onAfterEditStop", [
+					{value, old: +h}, {column: "TM", row: sid.row}, undefined
+				]
+			);
+		} else {
+			$$table.callEvent("onAfterEditStop", [
+					{value, old: +m}, {column: "TM", row: sid.row}, undefined
+				]
+			);
+		}
+		
 		$$table.updateItem(
 			sid.row,
-			{...cell, TM: webix.i18n.timeFormatDate(action(value, [h, m]))}
+			{
+				...cell,
+				DT: webix.Date.datePart(cell.DT, true),
+				TM: webix.i18n.timeFormatDate(action(value, [h, m]))
+			}
 		);
 	};
 }

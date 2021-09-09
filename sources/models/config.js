@@ -33,7 +33,7 @@ export function loadData(url) {
 					const [year, month, day] = date.split("-");
 					const [hours, minutes] = time.split(":");
 					
-					data["DT"] = new Date(Date.UTC(year, month - 1, day));
+					data["DT"] = webix.Date.datePart(new Date(Date.UTC(year, month - 1, day)), true);
 					data["TM"] = new Date(Date.UTC(year, month - 1, day, hours, minutes));
 					
 					return data;

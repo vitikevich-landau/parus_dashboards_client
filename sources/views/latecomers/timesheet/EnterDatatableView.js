@@ -1,6 +1,6 @@
 import {JetView} from "webix-jet";
 import {
-	configs,
+	configs, OnAfterEditStop,
 	onAfterSelectHandler,
 	OnBeforeDropHandler,
 	onItemClickHandler,
@@ -19,6 +19,7 @@ export default class EnterDatatableView extends JetView {
 				id: "NOTE",
 				header: "Примечание",
 				fillspace: true,
+				css: "activve"
 				// editor: "text"
 			},
 			...columns.slice(2)
@@ -46,7 +47,7 @@ export default class EnterDatatableView extends JetView {
 					{ACTION: "ВХОД"},
 					{ACTION: "ВЫХОД"}
 				),
-				
+				onAfterEditStop: OnAfterEditStop,
 			},
 		};
 		

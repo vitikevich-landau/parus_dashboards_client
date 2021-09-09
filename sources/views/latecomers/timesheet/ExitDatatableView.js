@@ -6,7 +6,7 @@ import {
 	onItemClickHandler,
 	onAfterSelectHandler,
 	OnBeforeDropHandler,
-	foundByRelID
+	OnAfterEditStop
 } from "jet-views/latecomers/timesheet/config";
 import {exitCollection} from "../../../models/exitCollection";
 import {enterCollection} from "../../../models/enterCollection";
@@ -34,38 +34,7 @@ export default class ExitDatatableView extends JetView {
 					{ACTION: "ВЫХОД"},
 					{ACTION: "ВХОД"}
 				),
-				onEditorChange(cell, value) {
-					const item = this.getItem(cell.row);
-					const {REL_ID} = item;
-					const {enter} = foundByRelID(REL_ID);
-					
-					const $$enter = $$("enter:datatable");
-					
-					const ent = $$enter.getItem(enter.id);
-					
-					$$enter.updateItem(enter.id, {
-						...ent,
-						NOTE: value
-					});
-					
-				},
-				onDataUpdate(id, data, old) {
-					const item = this.getItem(id);
-					const {REL_ID} = item;
-					const {enter, exit} = foundByRelID(REL_ID);
-					
-					const $$enter = $$("enter:datatable");
-					const $$exit = $$("exit:datatable");
-					
-					$$enter.removeRowCss(enter.id, "latecomers-active");
-					$$exit.removeRowCss(exit.id, "latecomers-active");
-					
-					$$enter.addRowCss(enter.id, "latecomers-vacation");
-					$$exit.addRowCss(exit.id, "latecomers-vacation");
-				},
-				onAfterAdd(id, indx) {
-					console.log(id, indx);
-				}
+				onAfterEditStop: OnAfterEditStop,
 			}
 		};
 	}

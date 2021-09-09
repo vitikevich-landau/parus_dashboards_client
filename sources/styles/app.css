@@ -1,5 +1,5 @@
-.webix_column>div.webix_column_select,
-.webix_column>div.webix_row_select {
+.webix_column > div.webix_column_select,
+.webix_column > div.webix_row_select {
     color: inherit;
     font-weight: 500;
 }
@@ -17,8 +17,9 @@
     color: red;
 }
 
-.activve {
-    background: #edeff5;
+div.webix_column.activve {
+    /*background: #edeff5;*/
+    background: #F4F6F3 !important;
 }
 
 .bordered {

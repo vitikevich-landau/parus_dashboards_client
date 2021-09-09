@@ -54,5 +54,13 @@ export default class TopView extends JetView {
 		webix.editors.$popup = {
 			date
 		};
+		
+		// webix.DataStore.prototype.sorting.as.bydate = function (a, b) {
+		//
+		// 	return webix.filters.date.greater(
+		// 		webix.Date.datePart(a, true),
+		// 		webix.Date.datePart(b, true)
+		// 	) ? 1 : -1;
+		// };
 	}
 }

@@ -35,7 +35,7 @@ export default class EmployeesListView extends JetView {
 								
 								webix.message({
 									text: `Запись: "${enter.FULLNAME}" удалена`,
-									type: `success`,
+									type: `debug`,
 									expire: 8000
 								});
 							});

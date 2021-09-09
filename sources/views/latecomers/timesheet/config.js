@@ -11,7 +11,7 @@ export const date = {
 	body: {
 		view: "calendar",
 		icons: [today],
-	}
+	},
 };
 
 const columns = [
@@ -22,6 +22,7 @@ const columns = [
 		// sort(a, b) {
 		// 	// console.log(a, b);
 		// }
+		css: "activve"
 	},
 	{
 		id: "NOTE",
@@ -31,7 +32,8 @@ const columns = [
 	},
 	{
 		id: "ACTION",
-		header: ["Действие"]
+		header: ["Действие"],
+		css: "activve"
 	},
 	{
 		adjust: "data",
@@ -63,6 +65,75 @@ export const configs = {
 	columns
 };
 
+export function OnAfterEditStop(state, editor, ignoreUpdate) {
+	const {value, old} = state;
+	const {column, row} = editor;
+	
+	const item = this.getItem(row);
+	const {REL_ID} = item;
+	const {enter, exit} = foundByRelID(REL_ID);
+	
+	const $$enter = $$("enter:datatable");
+	const $$exit = $$("exit:datatable");
+	
+	switch (column) {
+		case "TM": {
+			if (value !== old) {
+				$$enter.removeRowCss(enter.id, "latecomers-active");
+				$$exit.removeRowCss(exit.id, "latecomers-active");
+				
+				$$enter.addRowCss(enter.id, "latecomers-vacation");
+				$$exit.addRowCss(exit.id, "latecomers-vacation");
+			}
+		}
+			break;
+		case "NOTE": {
+			const old_ = old === undefined ? "" : old === null ? "" : old;
+			
+			if (value !== old_) {
+				$$enter.updateItem(enter.id, {
+					...$$enter.getItem(enter.id),
+					NOTE: value
+				});
+				
+				$$enter.removeRowCss(enter.id, "latecomers-active");
+				$$exit.removeRowCss(exit.id, "latecomers-active");
+				
+				$$enter.addRowCss(enter.id, "latecomers-vacation");
+				$$exit.addRowCss(exit.id, "latecomers-vacation");
+			}
+		}
+			break;
+		case "DT": {
+			const value_ = webix.Date.datePart(value, true);
+			
+			if (!webix.Date.equal(value_, webix.Date.datePart(old, true))
+			) {
+				$$enter.updateItem(enter.id, {
+					...$$enter.getItem(enter.id),
+					DT: value_
+				});
+				
+				$$exit.updateItem(exit.id, {
+					...$$exit.getItem(exit.id),
+					DT: value_
+				});
+				
+				$$enter.removeRowCss(enter.id, "latecomers-active");
+				$$exit.removeRowCss(exit.id, "latecomers-active");
+				
+				$$enter.addRowCss(enter.id, "latecomers-vacation");
+				$$exit.addRowCss(exit.id, "latecomers-vacation");
+				
+				// $$enter.sort({as: "bydate", dir: "desc", by: "DT"});
+				// $$exit.sort({as: "bydate", dir: "desc", by: "DT"});
+				
+			}
+		}
+			break;
+	}
+}
+
 export function onItemDblClickHandler(id, e, node) {
 	if (id.column === "NOTE") {
 		this.editCell(id.row, id.column);
@@ -71,7 +142,7 @@ export function onItemDblClickHandler(id, e, node) {
 
 export function onKeyPressHandler() {
 	return function (code, e) {
-		// console.log(code);
+		console.log(code);
 		switch (code) {
 			/***
 			 *	F2 key
@@ -84,22 +155,50 @@ export function onKeyPressHandler() {
 				}
 			}
 				break;
-			case 33:
+			case 36:
+				if (this.getEditState()) {
+					return;
+				}
 				selectBothItems(this, this.getFirstId());
 				break;
-			case 34:
+			case 35:
+				if (this.getEditState()) {
+					return;
+				}
 				selectBothItems(this, this.getLastId());
 				break;
+			/****
+			 * 	left
+			 * */
 			case 37:
-				selectBothItems(this, this.getFirstId());
+				if (this.getEditState()) {
+					return;
+				}
+				selectBothItems(this, this.getSelectedId());
+				
+				webix.UIManager.setFocus($$("exit:datatable"));
 				break;
+			/****
+			 * 	right
+			 * */
 			case 39:
-				selectBothItems(this, this.getLastId());
+				if (this.getEditState()) {
+					return;
+				}
+				selectBothItems(this, this.getSelectedId());
+				
+				webix.UIManager.setFocus($$("enter:datatable"));
 				break;
 			case 38:
+				if (this.getEditState()) {
+					return;
+				}
 				selectBothItems(this, this.getPrevId(this.getSelectedId()));
 				break;
 			case 40:
+				if (this.getEditState()) {
+					return;
+				}
 				selectBothItems(this, this.getNextId(this.getSelectedId()));
 				break;
 			case 46: {
@@ -140,7 +239,7 @@ export function onKeyPressHandler() {
 							
 							webix.message({
 								text: `Запись: "${enter.FULLNAME}" удалена`,
-								type: `success`,
+								type: `debug`,
 								expire: 8000
 							});
 							
@@ -174,7 +273,7 @@ export function OnBeforeDropHandler(sourceStore, store, sourceStoreAction, store
 				ID: webix.uid(),
 				REL_ID: relID,
 				FULLNAME: from.getItem(source[0]).FULLNAME,
-				DT: now,
+				DT: webix.Date.datePart(now, true),
 				TM: now,
 				...sourceStoreAction
 			}, 0);
@@ -183,7 +282,7 @@ export function OnBeforeDropHandler(sourceStore, store, sourceStoreAction, store
 				ID: webix.uid(),
 				REL_ID: relID,
 				FULLNAME: from.getItem(source[0]).FULLNAME,
-				DT: now,
+				DT: webix.Date.datePart(now, true),
 				TM: time,
 				...storeAction
 			}, 0);
