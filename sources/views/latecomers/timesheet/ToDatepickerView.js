@@ -12,7 +12,11 @@ export class ToDatepickerView extends DatepickerView {
 			on: {
 				onChange: function (newValue, oldValue, config) {
 					const $$from = $$("from:datepicker");
-					const fromValue = $$from.getValue();
+					let fromValue = $$from.getValue();
+					
+					if (fromValue) {
+						fromValue = webix.Date.datePart(fromValue, true);
+					}
 					
 					$$from.getPopup().getBody().config.maxDate =
 						newValue === null ? undefined : newValue;

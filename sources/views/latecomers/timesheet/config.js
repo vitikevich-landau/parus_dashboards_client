@@ -142,7 +142,7 @@ export function onItemDblClickHandler(id, e, node) {
 
 export function onKeyPressHandler() {
 	return function (code, e) {
-		console.log(code);
+		// console.log(code);
 		switch (code) {
 			/***
 			 *	F2 key
