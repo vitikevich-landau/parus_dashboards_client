@@ -28,7 +28,8 @@ const columns = [
 		id: "NOTE",
 		header: "Примечание",
 		fillspace: true,
-		editor: "text"
+		// editor: "text"
+		editor: "popup"
 	},
 	{
 		id: "ACTION",
@@ -135,8 +136,10 @@ export function OnAfterEditStop(state, editor, ignoreUpdate) {
 }
 
 export function onItemDblClickHandler(id, e, node) {
-	if (id.column === "NOTE") {
-		this.editCell(id.row, id.column);
+	switch (id.column) {
+		case "NOTE":
+			this.editCell(id.row, id.column);
+			break;
 	}
 }
 
@@ -320,11 +323,14 @@ export function onItemClickHandler(timeEditWindowId) {
 			this.editCancel();
 		}
 		
-		if (id.column === "TM") {
-			$$editor.show(e);
-			$$editor.getBody(e).focus();
-		} else if (id.column !== "NOTE") {
-			this.editCell(id.row, id.column);
+		switch (id.column) {
+			case "TM":
+				$$editor.show(e);
+				$$editor.getBody(e).focus();
+				break;
+			case "DT":
+				this.editCell(id.row, id.column);
+				break;
 		}
 		
 		const selected = this.getSelectedId();

@@ -1,5 +1,5 @@
-// export const API_SERVICE_URL = "/api";
-export const API_SERVICE_URL = "http://localhost:3000/api";
+export const API_SERVICE_URL = "/api";
+// export const API_SERVICE_URL = "http://localhost:3000/api";
 export const LATECOMERS_PIE_CHART_URL = API_SERVICE_URL
 	+ "/dashboards/latecomers/pie";
 export const LATECOMERS_LINE_CHART_URL = API_SERVICE_URL

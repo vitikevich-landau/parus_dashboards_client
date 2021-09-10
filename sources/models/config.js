@@ -18,7 +18,7 @@ export const proxyWithThrottle = url => webix.proxy("rest", url, {
 			.then(json => console.log(json));
 		
 		return promise;
-	}, 500)
+	}, 350)
 });
 
 export function loadData(url) {
