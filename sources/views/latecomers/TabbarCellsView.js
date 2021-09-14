@@ -62,16 +62,14 @@ export class TabbarCellsView extends JetView {
 		webix.html.addCss(
 			$$("tabbar:exit")
 				.getNode()
-				.getElementsByClassName("webix_accordionitem_label")
-				[0],
+				.getElementsByClassName("webix_accordionitem_label")[0],
 			"red"
 		);
 		
 		webix.html.addCss(
 			$$("tabbar:enter")
 				.getNode()
-				.getElementsByClassName("webix_accordionitem_label")
-				[0],
+				.getElementsByClassName("webix_accordionitem_label")[0],
 			"green"
 		);
 	}

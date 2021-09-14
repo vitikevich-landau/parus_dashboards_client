@@ -1,4 +1,4 @@
-import {format} from "../../../utils/functions";
+import {format, throttle} from "../../../utils/functions";
 
 const slider = {
 	view: "slider",
@@ -12,7 +12,10 @@ const slider_h = {
 	max: 23,
 	on: {
 		onItemClick: onClickHandler((v, [_, m]) => `${v}:${m}`),
-		onSliderDrag: onClickHandler((v, [_, m]) => `${v}:${m}`)
+		onSliderDrag: throttle(
+			() => onClickHandler((v, [_, m]) => `${v}:${m}`),
+			500
+		)
 	},
 	
 };
@@ -22,7 +25,10 @@ const slider_m = {
 	max: 59,
 	on: {
 		onItemClick: onClickHandler((v, [h, _]) => `${h}:${v}`),
-		onSliderDrag: onClickHandler((v, [h, _]) => `${h}:${v}`)
+		onSliderDrag: throttle(
+			() => onClickHandler((v, [h, _]) => `${h}:${v}`),
+			500
+		)
 	}
 };
 
