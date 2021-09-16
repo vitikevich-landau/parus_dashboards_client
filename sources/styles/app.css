@@ -41,6 +41,26 @@ div.webix_cell.latecomers-selected-cell {
     background: #F0DCB6 !important;
 }
 
+/*
+    timesheet table edit styles
+*/
+.col-disabled,
+.col-disabled > .row-edited {
+    opacity: .86;
+}
+
+.col-disabled {
+    background: #F4F6F3;
+}
+
+.row-added {
+    background: #F0DCB6 !important;
+}
+
+.row-edited {
+    background-color: #58dccd;
+}
+
 .latecomers-vacation {
     background-color: #58dccd !important;
 }

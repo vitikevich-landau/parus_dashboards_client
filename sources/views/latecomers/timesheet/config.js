@@ -22,7 +22,7 @@ const columns = [
 		// sort(a, b) {
 		// 	// console.log(a, b);
 		// }
-		css: "activve"
+		css: "col-disabled"
 	},
 	{
 		id: "NOTE",
@@ -34,7 +34,7 @@ const columns = [
 	{
 		id: "ACTION",
 		header: ["Действие"],
-		css: "activve"
+		css: "col-disabled"
 	},
 	{
 		adjust: "data",
@@ -80,11 +80,11 @@ export function OnAfterEditStop(state, editor, ignoreUpdate) {
 	switch (column) {
 		case "TM": {
 			if (value !== old) {
-				$$enter.removeRowCss(enter.id, "latecomers-active");
-				$$exit.removeRowCss(exit.id, "latecomers-active");
+				$$enter.removeRowCss(enter.id, "row-added");
+				$$exit.removeRowCss(exit.id, "row-added");
 				
-				$$enter.addRowCss(enter.id, "latecomers-vacation");
-				$$exit.addRowCss(exit.id, "latecomers-vacation");
+				$$enter.addRowCss(enter.id, "row-edited");
+				$$exit.addRowCss(exit.id, "row-edited");
 			}
 		}
 			break;
@@ -97,11 +97,16 @@ export function OnAfterEditStop(state, editor, ignoreUpdate) {
 					NOTE: value
 				});
 				
-				$$enter.removeRowCss(enter.id, "latecomers-active");
-				$$exit.removeRowCss(exit.id, "latecomers-active");
+				$$exit.updateItem(exit.id, {
+					...$$enter.getItem(exit.id),
+					NOTE: value
+				});
 				
-				$$enter.addRowCss(enter.id, "latecomers-vacation");
-				$$exit.addRowCss(exit.id, "latecomers-vacation");
+				$$enter.removeRowCss(enter.id, "row-added");
+				$$exit.removeRowCss(exit.id, "row-added");
+				
+				$$enter.addRowCss(enter.id, "row-edited");
+				$$exit.addRowCss(exit.id, "row-edited");
 			}
 		}
 			break;
@@ -120,11 +125,11 @@ export function OnAfterEditStop(state, editor, ignoreUpdate) {
 					DT: value_
 				});
 				
-				$$enter.removeRowCss(enter.id, "latecomers-active");
-				$$exit.removeRowCss(exit.id, "latecomers-active");
+				$$enter.removeRowCss(enter.id, "row-added");
+				$$exit.removeRowCss(exit.id, "row-added");
 				
-				$$enter.addRowCss(enter.id, "latecomers-vacation");
-				$$exit.addRowCss(exit.id, "latecomers-vacation");
+				$$enter.addRowCss(enter.id, "row-edited");
+				$$exit.addRowCss(exit.id, "row-edited");
 				
 				// $$enter.sort({as: "bydate", dir: "desc", by: "DT"});
 				// $$exit.sort({as: "bydate", dir: "desc", by: "DT"});
@@ -306,8 +311,8 @@ export function OnBeforeDropHandler(sourceStore, store, sourceStoreAction, store
 			/***
 			 * 	Colored new item
 			 * */
-			$$enter.addRowCss(enterFirstID, "latecomers-active");
-			$$exit.addRowCss(exitFirstID, "latecomers-active");
+			$$enter.addRowCss(enterFirstID, "row-added");
+			$$exit.addRowCss(exitFirstID, "row-added");
 		}
 		
 		return false;

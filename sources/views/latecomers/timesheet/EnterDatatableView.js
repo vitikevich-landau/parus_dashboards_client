@@ -12,22 +12,8 @@ import {exitCollection} from "../../../models/exitCollection";
 
 export default class EnterDatatableView extends JetView {
 	config() {
-		const {columns} = configs;
-		const [fullnameColumn] = columns;
-		const cols = [
-			fullnameColumn, {
-				id: "NOTE",
-				header: "Примечание",
-				fillspace: true,
-				css: "activve"
-				// editor: "text"
-			},
-			...columns.slice(2)
-		];
-		
 		return {
 			...configs,
-			columns: cols,
 			id: "enter:datatable",
 			on: {
 				onItemDblClick: onItemDblClickHandler,
